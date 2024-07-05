@@ -5,11 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv_1 = __importDefault(require("dotenv"));
 const path_1 = __importDefault(require("path"));
-dotenv_1.default.config({ path: path_1.default.join(process.cwd(), '.env') });
+dotenv_1.default.config({ path: path_1.default.join(process.cwd(), ".env") });
 exports.default = {
     port: process.env.PORT,
     database_url: process.env.DATABASE_URL,
     salt_rounds: process.env.SALT_ROUNDS,
     jwt_secret: process.env.JWT_SECRET,
-    jwt_accessToken_expiresIn: process.env.JWT_ACCESSTOKEN_EXPIRESIN,
+    jwt_accessToken_expiresIn: process.env.JWT_ACCESS_TOKEN_EXPIRESIN,
 };

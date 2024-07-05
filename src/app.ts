@@ -15,10 +15,8 @@ const app: Application = express();
 // );
 
 const allowedOrigins = [
-  "http://localhost:3000",
-  "http://localhost:3001",
-  "https://portfolio-pink-ten-95.vercel.app",
-  "https://portfolio-dashboard-one.vercel.app",
+  "https://portfolio-dashboard-lime.vercel.app",
+  "https://my-portfolio-three-kohl-82.vercel.app",
 ];
 
 app.use(

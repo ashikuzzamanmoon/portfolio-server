@@ -19,11 +19,31 @@ const globalErrorhandler_1 = __importDefault(require("./app/middlewares/globalEr
 const notFountRoute_1 = require("./app/middlewares/notFountRoute");
 const app = (0, express_1.default)();
 // parser
-app.use((0, cors_1.default)({ origin: ["https://portfolio-pink-ten-95.vercel.app", "https://portfolio-dashboard-one.vercel.app"], credentials: true }));
+// app.use(
+//   cors({
+//     origin: "*",
+//     credentials: true,
+//   })
+// );
+const allowedOrigins = [
+    "https://portfolio-dashboard-lime.vercel.app",
+    "https://my-portfolio-three-kohl-82.vercel.app",
+];
+app.use((0, cors_1.default)({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        }
+        else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    credentials: true,
+}));
 app.use(express_1.default.json());
-app.use('/api/v1', routes_1.default);
-app.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.send('Hello user');
+app.use("/api/v1", routes_1.default);
+app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    res.send("Hello user");
 }));
 app.use(globalErrorhandler_1.default);
 app.use(notFountRoute_1.notFountRoute);
